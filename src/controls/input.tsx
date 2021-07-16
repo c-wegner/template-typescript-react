@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { options } from '../globals/styles.globals'
 import { ControlContainer } from './styles.controls'
 
 const TextBoxStyle = styled.input<{ textAlign: string, backgroundColor?: string }> `
@@ -12,7 +11,6 @@ const SelectStyle = styled.select<{ textAlign: string, backgroundColor?: string 
   text-align: ${p => p.textAlign};
   background-color: ${p => p.backgroundColor};
 `
-
 
 const getBackgroundColor = (readOnly: boolean, normalColor: string, readOnlyColor: string) => {
   return readOnly ? readOnlyColor : normalColor
