@@ -21,6 +21,10 @@ export const ControlGlobalStyle = createGlobalStyle`
     color: ${controlStyleOptions.color};
     border-color: ${controlStyleOptions.borderColor};
   } 
+
+  label{
+    font-size: .9rem;
+  }
 `
 
 const ControlContainerStyle = styled.div<{ width: string; padding: string }> `
@@ -36,7 +40,7 @@ const ControlLabelRowStyle = styled.div `
 `
 
 const ControlLabelStyle = styled.label `
-  font-size: .9rem;
+
 `
 
 const RequiredStyle = styled.div<{color: string}> `
