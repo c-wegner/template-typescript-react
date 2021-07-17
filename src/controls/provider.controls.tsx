@@ -6,6 +6,7 @@ export class IFormContext{
   updateObject: any;
   submitObject: any;
   resetObject: any;
+  readOnly: boolean;
 }
 
 export const FormContext= createContext(new IFormContext())
@@ -15,13 +16,16 @@ export const FormProvider=({
   path,
   required =[],
   nextObject= {},
-  children
+  children,
+  readOnly = false
 })=>{
   const [obj, setObj] = useState(cloneObject(object))
 
   useEffect(()=>{
     setObj(cloneObject(object))
   }, [object])
+
+
 
   const resetObject=()=>{
     setObj(cloneObject(object)) 
@@ -53,7 +57,8 @@ export const FormProvider=({
         }
       }
     },
-    resetObject: ()=>{resetObject()}
+    resetObject: ()=>{resetObject()},
+    readOnly: readOnly
   }
 
   return(
@@ -86,6 +91,5 @@ function validateObject(obj:any, required=[]):boolean{
       return false
     }
   }
-
   return true
 }

@@ -1,6 +1,51 @@
-import React from 'react'
+import React, {useContext, useEffect} from 'react'
 import styled from 'styled-components'
 import { ControlContainer } from './styles.controls'
+import { FormContext, IFormContext } from './provider.controls'
+
+export const TextBox=({
+  label,
+  prop,
+  width='100%',
+  required = false,
+  readOnly = false,
+  report=null,
+  setValue='',
+  inputType = 'text',
+  padding = '0',
+  alignText = 'left'
+})=>{
+  const formContext: IFormContext = useContext(FormContext)
+
+  let value = formContext.object[prop]
+  if(value===undefined){
+    value= setValue
+  }
+
+  let isReadOnly= formContext.readOnly
+  if(readOnly){isReadOnly= true}
+
+  const handleOnChange=(val)=>{
+    if(report){
+      report(val)
+    }
+    formContext.updateObject(prop, val)
+  }
+
+  return(
+    <ControledTextBox
+      label={label}
+      value={value}
+      onChange={handleOnChange}
+      inputType={inputType}
+      padding={padding}
+      alignText={alignText}
+      readOnly={isReadOnly}
+      width={width}
+      required={required}
+    />
+  )
+}
 
 const TextBoxStyle = styled.input<{ textAlign: string, backgroundColor?: string }> `
   text-align: ${p => p.textAlign};
