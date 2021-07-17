@@ -25,7 +25,7 @@ const App=()=>{
       <FormProvider object={testValue} path='' readOnly={readOnly}>
         <TextBox label='Test box' prop='test' width='50%'/>
 
-        <TextBox label='Test box' prop='test' width='50%' readOnly={true}/>
+        <TextBox label='Test box' prop='test' width='50%' readOnly={true} />
       </FormProvider>
       
 
