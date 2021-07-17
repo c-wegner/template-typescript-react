@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Check } from '../globals/icons'
 import { Layout } from '../globals/styles.globals'
-import { ControlContainer } from './styles.controls'
 
 const StageStyle = styled.div<{ align: string }> `
   display: flex;
@@ -12,8 +11,7 @@ const StageStyle = styled.div<{ align: string }> `
   justify-context: center;
   height: ${Layout.options.inputHeight};
   align-items: ${p => p.align};
-  border: 1px solid;
-
+  padding-top: .3rem;
 `
 
 const ContainerStyle = styled.div<{ padding: string }> `
@@ -43,7 +41,7 @@ const BoxStyle = styled.div<{ borderColor: string; backgroundColor: string }> `
   justify-content: center;
   margin: 0 7px 0 7px;
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 1px;
 `
 
 export const ControledCheckbox = ({
@@ -65,7 +63,7 @@ export const ControledCheckbox = ({
     <StageStyle align={right ? 'flex-end' : 'flex-start'}>
       <ContainerStyle padding={padding}>
         <BoxRegionStyle>
-        {
+          {
             !boxLast &&
             <LabelStyle>
               {label}

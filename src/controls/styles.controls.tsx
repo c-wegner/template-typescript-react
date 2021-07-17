@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import { Layout } from '../globals/styles.globals'
 
+
 const controlStyleOptions = {
   color: Layout.options.color,
   borderColor: Layout.options.color,
