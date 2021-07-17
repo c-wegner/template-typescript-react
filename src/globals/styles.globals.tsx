@@ -53,7 +53,7 @@ const LayoutStyles = {
   @media (min-width: ${options.screen.md}) {
     flex-direction: row;
     justify-content: ${p => p.justifyContent};
-    align-items: ${p => p.alignItems};
+    align-items: flex-end;
   }
 `,
 

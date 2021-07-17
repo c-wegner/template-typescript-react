@@ -7,6 +7,10 @@ const TextBoxStyle = styled.input<{ textAlign: string, backgroundColor?: string 
   background-color: ${p => p.backgroundColor};
   `
 
+  const TextAreaStyle = styled.textarea<{ textAlign: string }> `
+  background-color: ${p => p.backgroundColor};
+  `
+
 const SelectStyle = styled.select<{ textAlign: string, backgroundColor?: string }> `
   text-align: ${p => p.textAlign};
   background-color: ${p => p.backgroundColor};
@@ -127,4 +131,33 @@ const DisplayOptions=({
       </React.Fragment>
     )
   }
+}
+
+export const ControledTextArea = ({
+  label,
+  value,
+  onChange,
+  width = '100%',
+  required = false,
+  readOnly = false,
+  rows = 3,
+  padding = '0',
+}) => {
+
+  return (
+    <ControlContainer
+      width={width}
+      label={label}
+      required={required}
+      padding={padding}
+    >
+      <TextAreaStyle
+        value={value}
+        onChange={e => onChange(e.target.value)}
+        readOnly={readOnly}
+        backgroundColor={getBackgroundColor(readOnly, 'whitesmoke', 'white')}
+        rows={rows}
+      />
+    </ControlContainer>
+  )
 }
