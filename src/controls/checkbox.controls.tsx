@@ -138,10 +138,10 @@ export const RadioCheckbox =({
   radioValue
 }) => {
   const formContext = useContext(FormContext)
-  const checkState = formContext.state[prop]===radioValue
+  const checkState = formContext.object[prop]===radioValue
 
   const handleClick=(val)=>{
-    formContext.updateState(prop,val, radioValue)
+    formContext.updateObject(prop,val, radioValue)
   }
 
   return (

@@ -10,6 +10,7 @@ import { TextBox, Select } from './controls/input.controls';
 import { Panel } from './components/panel/styles.panel';
 import { DialogBox } from './components/dialog/style.diablog';
 import { ClientForm } from './forms/client.forms';
+import { Client } from './models/_client.models';
 
 
 
@@ -20,14 +21,13 @@ const App = () => {
   const [showPanel, setShowPanel] = useState('')
   const [showBox, setShowBox] = useState('')
 
-  const testClient = new Object()
-  testClient['name'] = 'Bob'
-  testClient['isBusiness'] = true
+  const testClient = new Client()
+
   return (
     <MasterStyle>
       <ControlGlobalStyle />
       <span onClick={() => setShowPanel('Test box')}>
-        {showBox} dddddddddd
+        {showBox} Show panel
       </span>
       <br />
       <Panel id='Test box' currentPanel={showPanel} onExit={()=>setShowPanel('')}>

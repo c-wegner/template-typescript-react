@@ -15,6 +15,7 @@ export class Client {
   email = '';
   notes = '';
 
+  isBillable= true;
   billType='Hourly'
   billPartnerRate = 375;
   billAssociateRate = 275
