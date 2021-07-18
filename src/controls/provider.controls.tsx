@@ -1,5 +1,5 @@
 import React, {useEffect, useState, createContext, useContext} from "react";
-import { editObject, submitObject } from '../models/firebase'
+import { editObject, submitObject } from '../globals/firebase'
 
 export class IFormContext{
   object: any;
