@@ -22,6 +22,7 @@ const App = () => {
 
   const testClient = new Object()
   testClient['name'] = 'Bob'
+  testClient['isBusiness'] = true
   return (
     <MasterStyle>
       <ControlGlobalStyle />

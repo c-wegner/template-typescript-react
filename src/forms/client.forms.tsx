@@ -4,6 +4,7 @@ import { FormProvider, ConditionalContent } from '../controls/provider.controls'
 import { Layout } from '../globals/styles.globals'
 import { TextBox } from '../controls/input.controls'
 import { Checkbox } from '../controls/checkbox.controls'
+import { PivotProvider, PivotPage } from '../components/pivot/context.pivot'
 
 export const ClientForm = ({
   client,
@@ -18,25 +19,37 @@ export const ClientForm = ({
       </Layout.Row>
 
       <FormProvider object={client} path='client' readOnly={readOnly}>
-        <Layout.Row justifyContent='flex-end'>
-          <Checkbox
-            label='Business'
-            prop='isBusiness'
-            right
+        <PivotProvider pages={[
+          'General',
+          'Billing',
+          'Follow up',
+          'Notes'
+        ]}
+        >
+          <PivotPage id='General'>
+            <Layout.Row justifyContent='flex-end'>
+              <Checkbox
+                label='Business'
+                prop='isBusiness'
+                right
 
-          />
+              />
 
-        </Layout.Row>
-        <Layout.Row>
-          <TextBox label='Client name' prop='name' />
-        </Layout.Row>
-        <ConditionalContent prop='isBusiness' condition={true}>
-          <Layout.Row>
-            <TextBox label='Contact' prop='contact' padding='0 4px 0 0' width='60%' />
-            <TextBox label='Position' prop='position' width='40%' />
-          </Layout.Row>
+            </Layout.Row>
+            <Layout.Row>
+              <TextBox label='Client name' prop='name' />
+            </Layout.Row>
+            <ConditionalContent prop='isBusiness' condition={true}>
+              <Layout.Row>
+                <TextBox label='Contact' prop='contact' padding='0 4px 0 0' width='60%' />
+                <TextBox label='Position' prop='position' width='40%' />
+              </Layout.Row>
 
-        </ConditionalContent>
+            </ConditionalContent>
+          </PivotPage>
+
+        </PivotProvider>
+
 
       </FormProvider>
     </FormStyle>
