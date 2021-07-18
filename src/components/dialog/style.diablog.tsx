@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Layout } from '../../globals/styles.globals'
 import { Cancel } from '../../globals/icons'
+import { Button } from '../../controls/button.controls'
 
 const StageContainer= styled.div `
   display: ${p=>p.display};
@@ -37,7 +38,7 @@ export const DialogBox=({
   currentDialog,
   width='777px',
   onExit=null, 
-  children
+  children,
 })=>{
   const display= id===currentDialog
   const showExitBar= true 
@@ -48,9 +49,13 @@ export const DialogBox=({
         <ExitBarStyle display={showExitBar? 'flex': 'none'}>
           <Cancel size='1.7rem' onClick={()=>onExit()}/>
         </ExitBarStyle>
+        {children}
+        <Layout.Row justifyContent='flex-end'>
+        <Button color='black' background='whitesmoke' width='30%' onClick={()=>onExit()} label='Ok' border='1px solid lightgrey'/>
+          <Button color='white' background='crimson' width='30%' onClick={()=>onExit()} label='Ok' border='1px solid crimson'/>
+        </Layout.Row>
       </DialogBoxStyle>
     </StageContainer>
   )
-
 
 }

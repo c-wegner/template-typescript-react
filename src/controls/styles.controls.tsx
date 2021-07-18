@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import { Layout } from '../globals/styles.globals'
 
 
-const controlStyleOptions = {
+export const controlStyleOptions = {
   color: Layout.options.color,
   borderColor: Layout.options.color,
   inputHeight: Layout.options.inputHeight,
@@ -11,7 +11,7 @@ const controlStyleOptions = {
 }
 
 export const ControlGlobalStyle = createGlobalStyle`
-  input, textarea, select{
+  input, textarea, select, .btn{
     min-height: ${controlStyleOptions.inputHeight};
     border: none;
     border-bottom: 1px solid;
