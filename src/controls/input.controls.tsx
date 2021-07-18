@@ -52,7 +52,7 @@ const TextBoxStyle = styled.input<{ textAlign: string, backgroundColor?: string 
   background-color: ${p => p.backgroundColor};
   `
 
-  const TextAreaStyle = styled.textarea<{ textAlign: string }> `
+ const TextAreaStyle = styled.textarea<{ textAlign: string }> `
   background-color: ${p => p.backgroundColor};
   `
 
@@ -96,6 +96,46 @@ export const ControledTextBox = ({
   )
 }
 
+export const Select=({
+  label,
+  prop,
+  width='100%',
+  required = false,
+  readOnly = false,
+  report=null,
+  setValue='',
+  padding = '0',
+  options=[]
+})=>{
+  const formContext = useContext(FormContext)
+
+  let value=formContext.object[prop]
+
+  let isReadOnly= formContext.readOnly
+  if(readOnly){isReadOnly= true}
+
+  const handleOnChange=(val)=>{
+    if(report){
+      report(val)
+    }
+    formContext.updateObject(prop, val)
+  }
+
+  return(
+    <ControledSelect
+      label={label}
+      value={value}
+      onChange={handleOnChange}
+      width={width}
+      required={required}
+      setValue={setValue}
+      padding={padding}
+      options={options}
+      readOnly={isReadOnly}
+    />
+  )
+}
+
 export const ControledSelect = ({
   label,
   value,
@@ -105,7 +145,8 @@ export const ControledSelect = ({
   readOnly = false,
   padding = '0',
   includeBlankOption = false,
-  options=[]
+  options=[],
+  setValue='',
 }) => {
   const handleOnChange=(val)=>{
     if(!readOnly){

@@ -6,7 +6,7 @@ import { ControledCheckbox } from './controls/checkbox';
 import { Layout } from './globals/styles.globals';
 
 import { FormProvider } from './controls/provider.controls';
-import { TextBox } from './controls/input.controls';
+import { TextBox, Select } from './controls/input.controls';
 
 
 
@@ -24,6 +24,7 @@ const App=()=>{
 
       <FormProvider object={testValue} path='' readOnly={readOnly}>
         <TextBox label='Test box' prop='test' width='50%'/>
+        <Select label= 'Test drop' prop='test' options={['Opt a', 'opt b']}/>
 
         <TextBox label='Test box' prop='test' width='50%' readOnly={true} />
       </FormProvider>
