@@ -105,7 +105,8 @@ export const Select=({
   report=null,
   setValue='',
   padding = '0',
-  options=[]
+  options=[],
+  includeBlankOption = false,
 })=>{
   const formContext = useContext(FormContext)
 
@@ -132,6 +133,7 @@ export const Select=({
       padding={padding}
       options={options}
       readOnly={isReadOnly}
+      includeBlankOption={includeBlankOption}
     />
   )
 }

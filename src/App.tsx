@@ -1,34 +1,36 @@
-import React, {useState} from 'react';
-import {MasterStyle} from './globals/styles.globals'
+import React, { useState } from 'react';
+import { MasterStyle } from './globals/styles.globals'
 import { ControlGlobalStyle } from './controls/styles.controls';
 import { ControledTextBox, ControledSelect } from './controls/input.controls';
-import { ControledCheckbox } from './controls/checkbox';
+import { ControledCheckbox } from './controls/checkbox.controls';
 import { Layout } from './globals/styles.globals';
 
-import { FormProvider } from './controls/provider.controls';
+import { FormProvider, ConditionalContent } from './controls/provider.controls';
 import { TextBox, Select } from './controls/input.controls';
 
 
 
 
-const App=()=>{
+const App = () => {
   const [testValue, setTestValue] = useState(new Object())
   const [readOnly, setReadOnly] = useState(true)
-  return(
+  return (
     <MasterStyle>
-      <ControlGlobalStyle/>
-      <span onClick={()=>setReadOnly(!readOnly)}>
+      <ControlGlobalStyle />
+      <span onClick={() => setReadOnly(!readOnly)}>
         {readOnly.toString()}
       </span>
       <br />
 
       <FormProvider object={testValue} path='' readOnly={readOnly}>
-        <TextBox label='Test box' prop='test' width='50%'/>
-        <Select label= 'Test drop' prop='test' options={['Opt a', 'opt b']}/>
+        <TextBox label='Test box' prop='test' width='50%' />
+        <ConditionalContent prop='test' condition='howdy' invertCondition>
+          <Select label='Test drop' prop='test' options={['Opt a', 'opt b']} />
 
-        <TextBox label='Test box' prop='test' width='50%' readOnly={true} />
+          <TextBox label='Test box' prop='test' width='50%' readOnly={true} />
+        </ConditionalContent>
       </FormProvider>
-      
+
 
     </MasterStyle>
   )

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
 import { Check } from '../globals/icons'
 import { Layout } from '../globals/styles.globals'
+import { IFormContext, FormContext} from './provider.controls' 
 
 const StageStyle = styled.div<{ align: string }> `
   display: flex;
@@ -44,6 +45,47 @@ const BoxStyle = styled.div<{ borderColor: string; backgroundColor: string }> `
   border-radius: 1px;
 `
 
+export const Checkbox=({
+  label,
+  prop,
+  readOnly = false,
+  report=null,
+  setValue=false,
+  padding = '0',
+  right = false,
+  boxLast = false
+})=>{
+  const formContext = useContext(FormContext)
+
+  let value = formContext[prop]
+  if(value===undefined){
+    value= setValue
+  }
+
+  let isReadOnly= formContext.readOnly
+  if(readOnly){isReadOnly= true}
+
+  const handleOnChange=()=>{
+    if(report){
+      report(!value)
+    }
+    formContext.updateObject(prop, !value)
+  }
+
+  return(
+    <ControledCheckbox
+      label = {label}
+      value={value}
+      onChange={handleOnChange}
+      padding={padding}
+      readOnly={isReadOnly}
+      right={right}
+      boxLast = {boxLast}
+    />
+  )
+
+}
+
 export const ControledCheckbox = ({
   label,
   value,
@@ -82,5 +124,26 @@ export const ControledCheckbox = ({
         </BoxRegionStyle>
       </ContainerStyle>
     </StageStyle>
+  )
+}
+
+export const RadioCheckbox =({
+  label = '',
+  prop,
+  readOnly = false,
+  boxLast = false,
+  right = false,
+  padding = '0',
+  radioValue
+}) => {
+  const formContext = useContext(FormContext)
+  const checkState = formContext.state[prop]===radioValue
+
+  const handleClick=(val)=>{
+    formContext.updateState(prop,val, radioValue)
+  }
+
+  return (
+    <ControledCheckbox label={label} value={checkState} onChange={handleClick} readOnly={readOnly}  boxLast={boxLast} right={right} padding={padding}/>
   )
 }

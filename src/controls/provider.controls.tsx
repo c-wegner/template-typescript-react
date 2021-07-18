@@ -93,3 +93,23 @@ function validateObject(obj:any, required=[]):boolean{
   }
   return true
 }
+
+
+export const ConditionalContent=({
+  children,
+   prop,
+  condition,
+  invertCondition = false
+})=>{
+  const formContext = useContext(FormContext)
+
+  const val = formContext.object[prop]
+  let showContent = val===condition
+  if(invertCondition){showContent=!showContent}
+
+  if(showContent){
+    return children
+  }else{
+    return <React.Fragment></React.Fragment>
+  }
+}
