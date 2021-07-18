@@ -18,12 +18,14 @@ const StageStyle = styled.div<{ align: string }> `
 const ContainerStyle = styled.div<{ padding: string }> `
   display: flex;
   padding: ${p => p.padding};
+  cursor: pointer;
 `
 
 const LabelStyle = styled.label`
   display: flex;
   align-items: center;
   padding-bottom: .2rem;
+  cursor: pointer;
 `
 
 const BoxRegionStyle = styled.div`
@@ -41,7 +43,7 @@ const BoxStyle = styled.div<{ borderColor: string; backgroundColor: string }> `
   align-items: center;
   justify-content: center;
   margin: 0 7px 0 7px;
-  cursor: pointer;
+
   border-radius: 1px;
 `
 
@@ -50,17 +52,13 @@ export const Checkbox=({
   prop,
   readOnly = false,
   report=null,
-  setValue=false,
   padding = '0',
   right = false,
-  boxLast = false
+  boxFirst = false
 })=>{
   const formContext = useContext(FormContext)
 
-  let value = formContext[prop]
-  if(value===undefined){
-    value= setValue
-  }
+  let value = formContext.object[prop]
 
   let isReadOnly= formContext.readOnly
   if(readOnly){isReadOnly= true}
@@ -80,7 +78,7 @@ export const Checkbox=({
       padding={padding}
       readOnly={isReadOnly}
       right={right}
-      boxLast = {boxLast}
+      boxLast = {boxFirst}
     />
   )
 
@@ -103,7 +101,7 @@ export const ControledCheckbox = ({
 
   return (
     <StageStyle align={right ? 'flex-end' : 'flex-start'}>
-      <ContainerStyle padding={padding}>
+      <ContainerStyle padding={padding} onClick={() => handleOnChange()}>
         <BoxRegionStyle>
           {
             !boxLast &&
@@ -111,7 +109,7 @@ export const ControledCheckbox = ({
               {label}
             </LabelStyle>
           }
-          <BoxStyle borderColor={value ? 'white' : 'lightgray'} backgroundColor={value ? 'white' : 'whitesmoke'} onClick={() => handleOnChange()}>
+          <BoxStyle borderColor={value ? 'white' : 'lightgray'} backgroundColor={value ? 'white' : 'whitesmoke'} >
             <Check color={value ? 'blue' : 'whitesmoke'} size='1.3rem' />
           </BoxStyle>
           {

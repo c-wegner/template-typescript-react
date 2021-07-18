@@ -9,6 +9,7 @@ import { FormProvider, ConditionalContent } from './controls/provider.controls';
 import { TextBox, Select } from './controls/input.controls';
 import { Panel } from './components/panel/styles.panel';
 import { DialogBox } from './components/dialog/style.diablog';
+import { ClientForm } from './forms/client.forms';
 
 
 
@@ -19,16 +20,20 @@ const App = () => {
   const [showPanel, setShowPanel] = useState('')
   const [showBox, setShowBox] = useState('')
 
+  const testClient = new Object()
+  testClient['name'] = 'Bob'
   return (
     <MasterStyle>
       <ControlGlobalStyle />
-      <span onClick={() => setShowBox('Test box')}>
+      <span onClick={() => setShowPanel('Test box')}>
         {showBox} dddddddddd
       </span>
       <br />
-      <Panel id='Test One' currentPanel={showPanel} onExit={()=>setShowPanel('')}>
-        Yes
+      <Panel id='Test box' currentPanel={showPanel} onExit={()=>setShowPanel('')}>
+        <ClientForm client={testClient} displayReadOnly/>
       </Panel>
+
+
       <DialogBox id='Test box' currentDialog={showBox} onExit={setShowBox}>
           HI
         </DialogBox>
