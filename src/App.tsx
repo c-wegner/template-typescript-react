@@ -7,6 +7,8 @@ import { Layout } from './globals/styles.globals';
 
 import { FormProvider, ConditionalContent } from './controls/provider.controls';
 import { TextBox, Select } from './controls/input.controls';
+import { Panel } from './components/panel/styles.panel';
+import { DialogBox } from './components/dialog/style.diablog';
 
 
 
@@ -14,14 +16,22 @@ import { TextBox, Select } from './controls/input.controls';
 const App = () => {
   const [testValue, setTestValue] = useState(new Object())
   const [readOnly, setReadOnly] = useState(true)
+  const [showPanel, setShowPanel] = useState('')
+  const [showBox, setShowBox] = useState('')
+
   return (
     <MasterStyle>
       <ControlGlobalStyle />
-      <span onClick={() => setReadOnly(!readOnly)}>
-        {readOnly.toString()}
+      <span onClick={() => setShowBox('Test box')}>
+        {showBox} dddddddddd
       </span>
       <br />
-
+      <Panel id='Test One' currentPanel={showPanel} onExit={()=>setShowPanel('')}>
+        Yes
+      </Panel>
+      <DialogBox id='Test box' currentDialog={showBox} onExit={setShowBox}>
+          HI
+        </DialogBox>
       <FormProvider object={testValue} path='' readOnly={readOnly}>
         <TextBox label='Test box' prop='test' width='50%' />
         <ConditionalContent prop='test' condition='howdy' invertCondition>
@@ -29,6 +39,8 @@ const App = () => {
 
           <TextBox label='Test box' prop='test' width='50%' readOnly={true} />
         </ConditionalContent>
+
+
       </FormProvider>
 
 
