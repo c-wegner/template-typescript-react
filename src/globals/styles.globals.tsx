@@ -10,7 +10,7 @@ export const options = {
   borderRadius: "3px",
   padding: "7px",
   margin: "7px",
-  inputHeight: "2.2rem",
+  inputHeight: "1.5rem",
 
   shadow: {
     standard: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
@@ -90,7 +90,7 @@ export const Layout = {
   Row: ({
     justifyContent = 'flex-start',
     alignItems = 'center',
-    paddingTop = '7px',
+    paddingTop = '17px',
     children
   }) => (
     <LayoutStyles.Row justifyContent={justifyContent} alignItems={alignItems} padding={paddingTop + ' 0 0 0'}>

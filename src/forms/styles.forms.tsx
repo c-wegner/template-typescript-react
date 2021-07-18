@@ -7,6 +7,8 @@ const EditButtonContainerStyle = styled.div `
   display: ${p=>p.display};
   align-items: center;
   cursor: pointer;
+  font-size: .9rem;
+  align-item: flex-start;
 `
 
 
@@ -27,7 +29,7 @@ export const EditButton=({
     }else{
       return(
         <>
-        <Cancel  size='1.4rem'/> Cancel
+        <Cancel  size='1.2rem'/> Cancel
         </>
       )
     }

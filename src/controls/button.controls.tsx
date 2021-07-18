@@ -16,8 +16,13 @@ const ButtonStyle = styled.div`
   background-color: ${p => p.background};
   justify-content: center;
   font-size: .9rem;
-  box-shadow: ${Layout.options.shadow.standard};
+  font-weight: 500;
   margin: ${p=>p.margin};
+  opacity: ${p=>p.opacity};
+
+  &:hover{
+    box-shadow: ${Layout.options.shadow.standard};
+  }
 `
 
 export const Button = ({
@@ -26,9 +31,9 @@ export const Button = ({
   disabled = false,
   width = '100%',
   color = 'inherit',
-  background = 'inherit',
-  border = '1px solid',
-  margin='0 5px'
+  background = 'whitesmoke',
+  border = '1px solid whitesmoke',
+  margin='0'
 }) => {
   const handleOnClick = () => {
     if (disabled) return
@@ -36,7 +41,7 @@ export const Button = ({
   }
 
   return (
-    <ButtonStyle width={width} border={border} color={color} background={background} onClick={()=>handleOnClick()} margin={margin}>
+    <ButtonStyle width={width} border={border} color={color} background={background} onClick={()=>handleOnClick()} margin={margin} opacity={disabled? .6 : 1}>
       {label}
     </ButtonStyle>
   )

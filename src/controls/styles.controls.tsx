@@ -66,6 +66,8 @@ export const ControlContainer:React.FC<IControlContainer>=({
 })=>{
   return(
     <ControlContainerStyle width={width} padding={padding}>
+
+    {children}
     <ControlLabelRowStyle>
       <ControlLabelStyle>
         {label}
@@ -74,7 +76,6 @@ export const ControlContainer:React.FC<IControlContainer>=({
         *
       </RequiredStyle>
     </ControlLabelRowStyle>
-    {children}
   </ControlContainerStyle>  
   )
 }

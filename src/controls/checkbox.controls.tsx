@@ -10,7 +10,7 @@ const StageStyle = styled.div<{ align: string }> `
   height: 100%;
   flex-grow: 1;
   justify-context: center;
-  height: ${Layout.options.inputHeight};
+  height: ${p=>p.height};
   align-items: ${p => p.align};
   padding-top: .3rem;
 `
@@ -54,7 +54,8 @@ export const Checkbox=({
   report=null,
   padding = '0',
   right = false,
-  boxFirst = false
+  boxFirst = false,
+  height=Layout.options.inputHeight
 })=>{
   const formContext = useContext(FormContext)
 
@@ -79,6 +80,7 @@ export const Checkbox=({
       readOnly={isReadOnly}
       right={right}
       boxLast = {boxFirst}
+      height={height}
     />
   )
 
@@ -92,6 +94,7 @@ export const ControledCheckbox = ({
   readOnly = false,
   padding = '0',
   boxLast = false,
+  height=Layout.options.inputHeight
 }) => {
   const handleOnChange = () => {
     if (!readOnly) {
@@ -100,7 +103,7 @@ export const ControledCheckbox = ({
   }
 
   return (
-    <StageStyle align={right ? 'flex-end' : 'flex-start'}>
+    <StageStyle align={right ? 'flex-end' : 'flex-start'} height={height}>
       <ContainerStyle padding={padding} onClick={() => handleOnChange()}>
         <BoxRegionStyle>
           {

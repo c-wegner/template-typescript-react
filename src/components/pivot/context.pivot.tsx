@@ -1,24 +1,25 @@
 import React, { createContext, useState } from 'react'
 import { useEffect } from 'react'
 import { useContext } from 'react'
-
 import styled from 'styled-components'
 
 const PivotContainerStyle = styled.div`
   display: flex;
   flex-direction: column;
+
 `
 
 const PivotMenuStyle = styled.div`
   display: flex;
   justify-content: flex-end;
   font-size: .9rem;
+  border-top: 1px solid lightgrey;
 `
 
 const PivotOptionStyle = styled.div<{ borderColor }> `
-  padding: 0 10px 4px 10px;
-  margin: 0 5px;
-  border-bottom: 2px solid ${p => p.borderColor};
+  padding: 0 0 2px 0;
+  margin:0 0 0 17px;
+  color: ${p => p.borderColor};
   cursor: pointer;
 `
 
@@ -87,7 +88,7 @@ const PivotOption = ({
     if (label === current) {
       return 'blue'
     } else {
-      return 'white'
+      return 'black'
     }
   }
 

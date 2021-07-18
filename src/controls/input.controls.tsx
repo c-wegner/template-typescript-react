@@ -221,6 +221,48 @@ const DisplayOptions=({
   }
 }
 
+export const TextArea=({
+  label,
+  prop,
+  width='100%',
+  required = false,
+  readOnly = false,
+  report=null,
+  setValue='',
+  padding = '0',
+  rows=3,
+})=>{
+  const formContext: IFormContext = useContext(FormContext)
+
+  let value = formContext.object[prop]
+  if(value===undefined){
+    value= setValue
+  }
+
+  let isReadOnly= formContext.readOnly
+  if(readOnly){isReadOnly= true}
+
+  const handleOnChange=(val)=>{
+    if(report){
+      report(val)
+    }
+    formContext.updateObject(prop, val)
+  }
+
+  return(
+    <ControledTextArea
+      label={label}
+      value={value}
+      onChange={handleOnChange}
+      padding={padding}
+      readOnly={isReadOnly}
+      width={width}
+      required={required}
+      rows={rows}
+    />
+  )
+}
+
 export const ControledTextArea = ({
   label,
   value,
