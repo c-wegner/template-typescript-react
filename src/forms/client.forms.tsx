@@ -29,8 +29,8 @@ export const ClientForm = ({
         <PivotProvider pages={[
           'General',
           'Billing',
-          'Follow up',
-          'Notes'
+          'Notes',
+          'Options'
         ]}
         >
 
