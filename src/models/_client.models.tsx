@@ -1,4 +1,4 @@
-import { submitObject, editObject } from "./firebase";
+import { submitObject, editObject } from "../globals/firebase";
 import { utilities } from "./utilities.models";
 
 export class Client {
