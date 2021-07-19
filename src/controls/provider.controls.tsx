@@ -54,6 +54,9 @@ export const FormProvider=({
         }
       }else{
         if(validateObject(obj, required)){
+          if(obj['id']===undefined || obj['id']===''){
+            obj['id']= new Date().getTime().toString()
+          }
           submitObject(obj, path)
           setObj(cloneObject(nextObject))
         }else{

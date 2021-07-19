@@ -27,9 +27,9 @@ export class ClientCard{
     return utilities.getAge(this.id)
   }
 
-  get client(){
+  getClient(setter){
   
-    return retrieveDocument('client', this.id)
+    return retrieveDocument('client', this.id, setter)
   }
 
 

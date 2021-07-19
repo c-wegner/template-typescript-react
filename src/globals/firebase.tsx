@@ -35,14 +35,14 @@ export function editObject(obj, propToUpdate, newPropValue, path) {
     });
 }
 
-export function retrieveDocument(path, docId) {
+export function retrieveDocument(path, docId, setter) {
   const db = firebase.firestore(app);
   let docRef = db.collection(path).doc(docId)
 
   docRef.get().then((doc) => {
     if (doc.exists) {
       const temp = doc.data()
-
+      setter(temp)
       return temp
     } else {
 

@@ -215,7 +215,7 @@ const SubmitButton = ({
   const formContext: IFormContext = useContext(FormContext)
   const client = formContext.object
 
-  if (client['id'] === '') {
+  if (client['id']===undefined || client['id'] === '') {
     client['id'] = new Date().getTime().toString()
   }
 

@@ -57,7 +57,7 @@ xxxxxxxxx
         {
 
           book.clients.map(x=>(
-            <div onClick={()=>setCurrentClient(x.client)}>
+            <div onClick={()=>setCurrentClient(x.getClient(setCurrentClient))}>
                     {x.display}
             </div>
 
