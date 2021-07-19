@@ -1073,3 +1073,119 @@ export const StopWatch = ({
   );
 };
 
+
+export const LeftArrow = ({
+  size = '1rem',
+  color = 'inherit',
+  hoverColor = 'inherit',
+  onClick = null,
+  visible = true,
+  margin = ''
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+  return (
+    <Box
+      size={size}
+      onClick={() => handleClick()}
+      margin={margin}
+      hoverColor={hoverColor}
+      visible={visible}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        color={color}
+        fill="currentColor"
+        className="bi bi-clock"
+        viewBox="0 0 16 16"
+      >
+
+<path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+
+ </svg>
+    </Box>
+  );
+};
+
+
+export const RightArrow = ({
+  size = '1rem',
+  color = 'inherit',
+  hoverColor = 'inherit',
+  onClick = null,
+  visible = true,
+  margin = ''
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+  return (
+    <Box
+      size={size}
+      onClick={() => handleClick()}
+      margin={margin}
+      hoverColor={hoverColor}
+      visible={visible}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        color={color}
+        fill="currentColor"
+        className="bi bi-clock"
+        viewBox="0 0 16 16"
+      >
+
+<path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+
+ </svg>
+    </Box>
+  );
+};
+
+export const DoubleRightArrow = ({
+  size = '1rem',
+  color = 'inherit',
+  hoverColor = 'inherit',
+  onClick = null,
+  visible = true,
+  margin = ''
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+  return (
+    <Box
+      size={size}
+      onClick={() => handleClick()}
+      margin={margin}
+      hoverColor={hoverColor}
+      visible={visible}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        color={color}
+        fill="currentColor"
+        className="bi bi-clock"
+        viewBox="0 0 16 16"
+      >
+
+<path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
+  <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
+
+ </svg>
+    </Box>
+  );
+};

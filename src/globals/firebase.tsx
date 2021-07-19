@@ -41,7 +41,9 @@ export function retrieveDocument(path, docId) {
 
   docRef.get().then((doc) => {
     if (doc.exists) {
-      return doc.data()
+      const temp = doc.data()
+
+      return temp
     } else {
 
       return {}

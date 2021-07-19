@@ -7,7 +7,7 @@ import { Checkbox, RadioCheckbox } from '../controls/checkbox.controls'
 import { PivotProvider, PivotPage } from '../components/pivot/context.pivot'
 import { Button } from '../controls/button.controls'
 import { submitObject } from '../globals/firebase'
-import { Client } from '../models/_client.models'
+import { ClientCard } from '../models/_client.card.models'
 
 export const ClientForm = ({
   client,
@@ -16,13 +16,14 @@ export const ClientForm = ({
 }) => {
   const [readOnly, setReadOnly] = useState(displayReadOnly)
   const path = 'client'
+  const req = ['name']
 
   return (
     <FormStyle width={width}>
 
 
       <FormProvider object={client} path={path} readOnly={readOnly}>
-        <Layout.Row justifyContent='space-between' alignItems='flex-end' paddingTop='0'>
+        <Layout.Row justifyContent='flex-end' alignItems='flex-end' paddingTop='0'>
           <EditButton readOnly={readOnly} setReadOnly={setReadOnly} showEditable={displayReadOnly} />
         </Layout.Row>
 
@@ -136,6 +137,7 @@ export const ClientForm = ({
 
                   />
                 </Layout.Row>
+
                 <Layout.Row>
                   <Checkbox
 
@@ -175,31 +177,30 @@ export const ClientForm = ({
 
                   />
                 </Layout.Row>
+
                 <Layout.Row>
                   <Checkbox
-
                     label='Use alternate short name'
                     prop='useAltShortName'
                     columnStyleCheckbox
-
                   />
                 </Layout.Row>
-                
+
               </Layout.Col>
             </Layout.Row>
             <Layout.Row>
               <ConditionalContent prop='useAltDisplayName' condition={true}>
-                <TextBox label='Alternate display name' prop='altDisplayName'/>
+                <TextBox label='Alternate display name' prop='altDisplayName' />
               </ConditionalContent>
-              </Layout.Row>
-                <Layout.Row>
+            </Layout.Row>
+            <Layout.Row>
               <ConditionalContent prop='useAltShortName' condition={true}>
-                <TextBox label='Alternate short name' prop='altShortName'/>
+                <TextBox label='Alternate short name' prop='altShortName' />
               </ConditionalContent>
             </Layout.Row>
           </PivotPage>
         </PivotProvider>
-        <SubmitButton disabled={readOnly} path={path} />
+        <SubmitButton disabled={readOnly} path={path} req={req} />
 
       </FormProvider>
     </FormStyle>
@@ -208,14 +209,21 @@ export const ClientForm = ({
 
 const SubmitButton = ({
   disabled = false,
-  path
+  path, 
+  req = []
 }) => {
   const formContext: IFormContext = useContext(FormContext)
   const client = formContext.object
 
+  if (client['id'] === '') {
+    client['id'] = new Date().getTime().toString()
+  }
 
   const handleOnClick = () => {
-    submitObject(client, path)
+    if (verifyRequirements(client, req)) {
+      ClientCard.generateAndSave(client)
+      formContext.submitObject(client)
+    }
   }
 
   return (
@@ -223,4 +231,16 @@ const SubmitButton = ({
       <Button label='Submit' disabled={disabled} width={'40%'} onClick={() => handleOnClick()} />
     </Layout.Row>
   )
+}
+
+function verifyRequirements(obj, req: string[]): boolean {
+  const l = req.length
+  for (let i = 0; i < l; i++) {
+    const r = obj[req[i]]
+    if (r === undefined || r === '') {
+      alert('Please answer ' + req[i])
+      return false
+    }
+  }
+  return true
 }

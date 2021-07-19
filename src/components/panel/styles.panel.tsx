@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Layout } from '../../globals/styles.globals'
-import { Cancel } from '../../globals/icons'
+import { Cancel, DoubleRightArrow } from '../../globals/icons'
 
 const ContainerStyle=styled.div<{width: string; boxShadow: string}> `
   display: flex;
   width: ${p=>p.width};
   position: fixed;
-  flex-direction: column;
+
   top:0;
   right: 0;
   bottom: 0;
@@ -20,14 +20,22 @@ const ContainerStyle=styled.div<{width: string; boxShadow: string}> `
 
 const PanelContentContainerStyle=styled.div `
   margin: 30px;
+  flex-grow: 1;
+  width: 100%;
+ 
 `
 
 
 const ExitBarStyle = styled.div<{display: string}> `
   display: ${p=>p.display};
-  justify-content: flex-end;
+  flex-direction: column;
   color: black;
-  width: 100%;
+
+  align-items: center;
+  padding-top: 10px;
+  background-color: #222;
+
+  border-right: 1px solid;
 `
 
 export const Panel=({
@@ -42,10 +50,11 @@ export const Panel=({
 
   return(
     <ContainerStyle width={display? width : '0'} boxShadow={display? Layout.options.shadow.hover : ''}>
-      <PanelContentContainerStyle>
+
       <ExitBarStyle display={showExitBar? 'flex': 'none'}>
-        <Cancel onClick={()=>onExit()} size='1.8rem' hoverColor='red'/> 
+        <DoubleRightArrow onClick={()=>onExit()} size='1rem' color='white'/>
       </ExitBarStyle>
+      <PanelContentContainerStyle>
       {
         display&&
         children
