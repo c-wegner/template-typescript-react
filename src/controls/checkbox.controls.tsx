@@ -19,6 +19,7 @@ const ContainerStyle = styled.div<{ padding: string }> `
   display: flex;
   padding: ${p => p.padding};
   cursor: pointer;
+  width: 100%;
 `
 
 const LabelStyle = styled.label`
@@ -30,8 +31,9 @@ const LabelStyle = styled.label`
 
 const BoxRegionStyle = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: ${p=>p.justify};
   align-items: center;
+  width: 100%;
 `
 
 const BoxStyle = styled.div<{ borderColor: string; backgroundColor: string }> `
@@ -55,7 +57,8 @@ export const Checkbox=({
   padding = '0',
   right = false,
   boxFirst = false,
-  height=Layout.options.inputHeight
+  height=Layout.options.inputHeight,
+  columnStyleCheckbox= false
 })=>{
   const formContext = useContext(FormContext)
 
@@ -81,6 +84,7 @@ export const Checkbox=({
       right={right}
       boxLast = {boxFirst}
       height={height}
+      columnStyleCheckbox={columnStyleCheckbox}
     />
   )
 
@@ -94,7 +98,8 @@ export const ControledCheckbox = ({
   readOnly = false,
   padding = '0',
   boxLast = false,
-  height=Layout.options.inputHeight
+  height=Layout.options.inputHeight,
+  columnStyleCheckbox = false
 }) => {
   const handleOnChange = () => {
     if (!readOnly) {
@@ -102,10 +107,15 @@ export const ControledCheckbox = ({
     }
   }
 
+  const getJustify=()=>{
+    if(columnStyleCheckbox) return 'space-between'
+    return right ? 'flex-end' : 'flex-start'
+  }
+
   return (
-    <StageStyle align={right ? 'flex-end' : 'flex-start'} height={height}>
+    <StageStyle align={'center'} height={height}>
       <ContainerStyle padding={padding} onClick={() => handleOnChange()}>
-        <BoxRegionStyle>
+        <BoxRegionStyle justify={getJustify()}>
           {
             !boxLast &&
             <LabelStyle>

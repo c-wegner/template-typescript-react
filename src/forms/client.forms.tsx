@@ -120,6 +120,84 @@ export const ClientForm = ({
               </Layout.Row>
             </ConditionalContent>
           </PivotPage>
+          <PivotPage id='Notes'>
+            <TextArea label='Detailed notes' prop='detailedNots' rows={7} />
+          </PivotPage>
+
+          <PivotPage id='Options'>
+            <Layout.Row justifyContent='center'>
+              <Layout.Col width='50%'>
+                <Layout.Row>
+
+                  <Checkbox
+                    label='Archived'
+                    prop='isArchived'
+                    columnStyleCheckbox
+
+                  />
+                </Layout.Row>
+                <Layout.Row>
+                  <Checkbox
+
+                    label='Firm related'
+                    prop='isFirmRelated'
+                    columnStyleCheckbox
+
+                  />
+                </Layout.Row>
+
+                <Layout.Row>
+
+                  <Checkbox
+                    label='Prospect'
+                    prop='isProspect'
+                    columnStyleCheckbox
+
+                  />
+                </Layout.Row>
+
+                <Layout.Row>
+                  <Checkbox
+
+                    label='Flag'
+                    prop='isFirmRelated'
+                    columnStyleCheckbox
+
+                  />
+                </Layout.Row>
+
+                <Layout.Row>
+                  <Checkbox
+
+                    label='Use alternate display'
+                    prop='useAltDisplayName'
+                    columnStyleCheckbox
+
+                  />
+                </Layout.Row>
+                <Layout.Row>
+                  <Checkbox
+
+                    label='Use alternate short name'
+                    prop='useAltShortName'
+                    columnStyleCheckbox
+
+                  />
+                </Layout.Row>
+                
+              </Layout.Col>
+            </Layout.Row>
+            <Layout.Row>
+              <ConditionalContent prop='useAltDisplayName' condition={true}>
+                <TextBox label='Alternate display name' prop='altDisplayName'/>
+              </ConditionalContent>
+              </Layout.Row>
+                <Layout.Row>
+              <ConditionalContent prop='useAltShortName' condition={true}>
+                <TextBox label='Alternate short name' prop='altShortName'/>
+              </ConditionalContent>
+            </Layout.Row>
+          </PivotPage>
         </PivotProvider>
         <SubmitButton disabled={readOnly} path={path} />
 
