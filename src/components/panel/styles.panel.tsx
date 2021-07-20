@@ -16,6 +16,7 @@ const ContainerStyle=styled.div<{width: string; boxShadow: string}> `
   box-shadow: ${p=>p.boxShadow};
   border-left: 1px solid slategray;
   background-color: white;
+  z-index: 1;
 `
 
 const PanelContentContainerStyle=styled.div `

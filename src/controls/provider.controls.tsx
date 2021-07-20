@@ -22,7 +22,7 @@ export const FormProvider=({
   const [obj, setObj] = useState(cloneObject(object))
 
   useEffect(()=>{
-
+    setObj(cloneObject(object))
   }, [object])
 
   useEffect(()=>{

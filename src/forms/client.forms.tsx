@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { FormStyle, EditButton } from './styles.forms'
 import { FormProvider, ConditionalContent, FormContext, IFormContext } from '../controls/provider.controls'
 import { Layout } from '../globals/styles.globals'
@@ -9,7 +9,15 @@ import { Button } from '../controls/button.controls'
 import { submitObject } from '../globals/firebase'
 import { ClientCard } from '../models/_client.card.models'
 
-export const ClientForm = ({
+import { Client } from '../models/client.models'
+
+interface IClientForm{
+  client: Client;
+  displayReadOnly?: boolean;
+  width?: string;
+}
+
+export const ClientForm: React.FC<IClientForm> = ({
   client,
   displayReadOnly = false,
   width = '100%'
@@ -17,6 +25,10 @@ export const ClientForm = ({
   const [readOnly, setReadOnly] = useState(displayReadOnly)
   const path = 'client'
   const req = ['name']
+
+  useEffect(() => {
+    setReadOnly(displayReadOnly)
+  }, [client])
 
   return (
     <FormStyle width={width}>
@@ -162,7 +174,7 @@ export const ClientForm = ({
                   <Checkbox
 
                     label='Flag'
-                    prop='isFirmRelated'
+                    prop='isFlagged'
                     columnStyleCheckbox
 
                   />

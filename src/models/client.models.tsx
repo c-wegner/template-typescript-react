@@ -1,5 +1,5 @@
 import { submitObject, editObject } from "../globals/firebase";
-import { utilities} from '../models/utilities.models'
+import { utilities} from './utilities.models'
 
 export class Client {
   id = '';

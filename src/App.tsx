@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import styled from 'styled-components'
 import { MasterStyle } from './globals/styles.globals'
 import { ControlGlobalStyle } from './controls/styles.controls';
 import { ControledTextBox, ControledSelect } from './controls/input.controls';
@@ -11,11 +12,21 @@ import { Panel } from './components/panel/styles.panel';
 import { DialogBox } from './components/dialog/style.diablog';
 import { ClientForm } from './forms/client.forms';
 
-import { ClientContext } from './models';
+import { ClientCard, ClientContext } from './models';
 
 import { AuthContext } from './models/_auth.models';
+import { Client } from './models/client.models'
+import { CardClient } from './components/cards/client.cards';
 
+const Lane = styled.div`
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+`
 
+const Stage = styled.div`
+  display: flex;
+`
 
 
 const App = () => {
@@ -27,51 +38,85 @@ const App = () => {
 
   let fThis = 'WHAT'
 
-  const [currentClient, setCurrentClient] = useState(null)
+  const [currentClient, setCurrentClient] = useState(new Client())
 
   useEffect(() => { }, [currentClient])
 
   if (currentClient) {
-    console.table(currentClient)
     fThis = currentClient['name']
   }
 
-  const testClient = new Object()
+  const handleSelectClient = (client) => {
+    if (client.id === currentClient.id) {
+      setCurrentClient(new ClientCard())
+    } else {
+      client.getClient(setCurrentClient)
+    }
+  }
+
   const book = useContext(ClientContext)
   return (
-    <MasterStyle>
-      <ControlGlobalStyle />
+    <React.Fragment>
       <span onClick={() => setShowPanel('Test box')}>
         {showBox} Show panel
       </span>
-      <br />
-      <Panel id='Test box' currentPanel={showPanel} onExit={() => setShowPanel('')}>
-        <ClientForm client={testClient} displayReadOnly />
-      </Panel>
-      {fThis}
-      <br />
-      <br/>
-      {authContext.username}
-      <br />
-      <br />
+      <Stage>
 
-      <DialogBox id='Test box' currentDialog={showBox} onExit={setShowBox}>
-        HI
-      </DialogBox>
-
-      {
-
-        book.clients.map(x => (
-          <div onClick={() => setCurrentClient(x.getClient(setCurrentClient))}>
-            {x.display}
-          </div>
-
-        ))
-      }
+        <br />
+        <Panel id='Test box' currentPanel={showPanel} onExit={() => setShowPanel('')}>
+          <ClientForm client={currentClient} displayReadOnly={!(currentClient.id === '')} />
+        </Panel>
 
 
+        <DialogBox id='Test box' currentDialog={showBox} onExit={setShowBox}>
+          HI
+        </DialogBox>
+        <Lane>
+          {
 
-    </MasterStyle>
+            book.clients.map(x => (
+              <CardClient client={x} current={currentClient} handleOnClickSelect={() => handleSelectClient(x)} />
+
+            ))
+          }
+
+        </Lane>
+
+        <Lane>
+          {
+
+            book.clients.map(x => (
+              <CardClient client={x} current={currentClient} handleOnClickSelect={() => handleSelectClient(x)} />
+
+            ))
+          }
+
+        </Lane>
+
+        <Lane>
+          {
+
+            book.clients.map(x => (
+              <CardClient client={x} current={currentClient} handleOnClickSelect={() => handleSelectClient(x)} />
+
+            ))
+          }
+
+        </Lane>
+
+        <Lane>
+          {
+
+            book.clients.map(x => (
+              <CardClient client={x} current={currentClient} handleOnClickSelect={() => handleSelectClient(x)} />
+
+            ))
+          }
+
+        </Lane>
+
+      </Stage>
+    </React.Fragment>
   )
 }
 
