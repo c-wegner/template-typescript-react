@@ -35,7 +35,9 @@ const ExitBarStyle = styled.div<{display: string}> `
   align-items: center;
   padding-top: 10px;
   background-color: #222;
-
+  height: 100%;
+  top:0;
+  bottom:0;
   border-right: 1px solid;
 `
 

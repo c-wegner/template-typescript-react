@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Layout } from '../../globals/styles.globals'
 import { ClientCard } from '../../models'
-import {CardStyle, Line, TextStyle} from './styles.cards'
+import {CardStyle, Line, Text} from './styles.cards'
 
 interface ICardClient{
   client: ClientCard;
@@ -55,15 +55,18 @@ export const CardClient: React.FC<{ICardClient}>=({
   return(
     <CardStyle opacity={getOpacity()} color={color} background={background} shadow={getShadow()}>
       <Line displayWhenCollapsed expanded={getExpanded()}>
-        <TextStyle color={color} onClick={()=>handleClickClientDisplay()}>
+        <Text color={color} onClick={()=>handleClickClientDisplay()} fontWeight='549'>
         {client.display}
-        </TextStyle>
+        </Text>
+        <Text justify={'flex-end'}>
+          {client.shortName}
+        </Text>
       </Line>
 
       <Line expanded={getExpanded()}>
-        <TextStyle color={color} onClick={()=>handleClickClientDisplay()}>
+        <Text color={color}>
         {client.display}ddddddddd
-        </TextStyle>
+        </Text>
       </Line>
     </CardStyle>
   )
