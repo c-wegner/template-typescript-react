@@ -13,6 +13,8 @@ import { ClientForm } from './forms/client.forms';
 
 import { ClientContext } from './models';
 
+import { AuthContext } from './models/_auth.models';
+
 
 
 
@@ -21,16 +23,17 @@ const App = () => {
   const [readOnly, setReadOnly] = useState(true)
   const [showPanel, setShowPanel] = useState('')
   const [showBox, setShowBox] = useState('')
+  const authContext = useContext(AuthContext)
 
   let fThis = 'WHAT'
 
-  const [currentClient, setCurrentClient]=useState(null)
+  const [currentClient, setCurrentClient] = useState(null)
 
-  useEffect(()=>{}, [currentClient])
+  useEffect(() => { }, [currentClient])
 
-  if(currentClient){
+  if (currentClient) {
     console.table(currentClient)
-    fThis= currentClient['name']
+    fThis = currentClient['name']
   }
 
   const testClient = new Object()
@@ -42,27 +45,29 @@ const App = () => {
         {showBox} Show panel
       </span>
       <br />
-      <Panel id='Test box' currentPanel={showPanel} onExit={()=>setShowPanel('')}>
-        <ClientForm client={testClient} displayReadOnly/>
+      <Panel id='Test box' currentPanel={showPanel} onExit={() => setShowPanel('')}>
+        <ClientForm client={testClient} displayReadOnly />
       </Panel>
       {fThis}
-xxxxxxxxx
-        <br />
-        <br />
+      <br />
+      <br/>
+      {authContext.username}
+      <br />
+      <br />
 
       <DialogBox id='Test box' currentDialog={showBox} onExit={setShowBox}>
-          HI
-        </DialogBox>
+        HI
+      </DialogBox>
 
-        {
+      {
 
-          book.clients.map(x=>(
-            <div onClick={()=>setCurrentClient(x.getClient(setCurrentClient))}>
-                    {x.display}
-            </div>
+        book.clients.map(x => (
+          <div onClick={() => setCurrentClient(x.getClient(setCurrentClient))}>
+            {x.display}
+          </div>
 
-          ))
-        }
+        ))
+      }
 
 
 
