@@ -32,7 +32,7 @@ const App = () => {
       </AppStageStyle>
       <Switch>
         <Route path='/clients'>
-          clientsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+          
         </Route>
         <Route path='/projects'>
 

@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { Layout } from '../../globals/styles.globals'
 import { Cancel, DoubleRightArrow } from '../../globals/icons'
 
-const ContainerStyle=styled.div<{width: string; boxShadow: string}> `
+const ContainerStyle = styled.div<{ width: string; boxShadow: string }> `
   display: flex;
-  width: ${p=>p.width};
+  width: ${p => p.width};
   position: fixed;
 
   top:0;
@@ -13,22 +13,33 @@ const ContainerStyle=styled.div<{width: string; boxShadow: string}> `
   bottom: 0;
   transition: width .25s;
   overflow-x: hidden;
-  box-shadow: ${p=>p.boxShadow};
+  box-shadow: ${p => p.boxShadow};
   border-left: 1px solid slategray;
   background-color: white;
-  z-index: 1;
+  z-index: 2;
 `
 
-const PanelContentContainerStyle=styled.div `
+const ClickScreen=styled.div `
+  display: ${p=>p.display};
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  rgba(0,0,0, .2);
+  cursor: pointer;
+`
+
+const PanelContentContainerStyle = styled.div`
   margin: 30px;
   flex-grow: 1;
   width: 100%;
- 
+  z-index: 1;
 `
 
 
-const ExitBarStyle = styled.div<{display: string}> `
-  display: ${p=>p.display};
+const ExitBarStyle = styled.div<{ display: string }> `
+  display: ${p => p.display};
   flex-direction: column;
   color: black;
 
@@ -41,29 +52,32 @@ const ExitBarStyle = styled.div<{display: string}> `
   border-right: 1px solid;
 `
 
-export const Panel=({
+export const Panel = ({
   children,
   id,
   currentPanel,
-  width='700px',
+  width = '700px',
   onExit = null,
-})=>{
-  const display= (id===currentPanel)
-  const showExitBar = onExit!==null
+}) => {
+  const display = (id === currentPanel)
+  const showExitBar = onExit !== null
 
-  return(
-    <ContainerStyle width={display? width : '0'} boxShadow={display? Layout.options.shadow.hover : ''}>
+  return (
+    <React.Fragment>
+    <ClickScreen onClick={()=>onExit()}/>
+    <ContainerStyle width={display ? width : '0'} boxShadow={display ? Layout.options.shadow.hover : ''}>
 
-      <ExitBarStyle display={showExitBar? 'flex': 'none'}>
-        <DoubleRightArrow onClick={()=>onExit()} size='1rem' color='white'/>
+      <ExitBarStyle display={showExitBar ? 'flex' : 'none'}>
+        <DoubleRightArrow onClick={() => onExit()} size='1rem' color='white' />
       </ExitBarStyle>
       <PanelContentContainerStyle>
-      {
-        display&&
-        children
-      }
+        {
+          display &&
+          children
+        }
       </PanelContentContainerStyle>
 
     </ContainerStyle>
+    </React.Fragment>
   )
 }

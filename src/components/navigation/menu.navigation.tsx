@@ -1,11 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
-import {useLocation, useHistory} from 'react-router-dom'
-import { Person, Folder, Clock, CashCoin, Gear, Speedometer } from '../../globals/icons'
+import { useLocation, useHistory } from 'react-router-dom'
+import { Person, Folder, Clock, CashCoin, Gear, Speedometer, PersonPlus, FolderPlus } from '../../globals/icons'
+import {Panel} from '../panel/styles.panel';
 
 import { Layout } from '../../globals/styles.globals'
 
-const MenuBarStyle=styled.div `
+const MenuBarStyle = styled.div`
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -13,38 +14,50 @@ const MenuBarStyle=styled.div `
   left:0;
   bottom: 0;
   align-items: center;
-  justify-context: space-between;
+  justify-content: space-between;
   color: white;
   width: 2.5rem;
   padding: 10px 0;
   background-color: #222;
 `
 
-export const MenuBarOptionsStyle = styled.nav `
+export const MenuBarOptionsStyle = styled.nav`
   display: flex;
   flex-direction: column;
 `
 
-export const MenuBar=({
+export const MenuBar = ({
   children
-})=>{
+}) => {
   const history = useHistory()
 
-  const handleOnClickMenuOption=(path:string)=>{
+  const handleOnClickMenuOption = (path: string) => {
     history.push(path)
   }
 
-  return(
+  const [panelTest, setPanelTest] = useState('')
+
+  return (
+    <React.Fragment>
+          <Panel id='Test panel' currentPanel={panelTest} onExit={()=>setPanelTest('')}>
+      Test
+    </Panel>
     <MenuBarStyle>
       <MenuBarOptionsStyle>
-      <Speedometer size='1.4rem' onClick={()=>handleOnClickMenuOption('/clients')} margin='0 0 7px 0' hoverColor='crimson'/>
-        <Person size='1.5rem' onClick={()=>handleOnClickMenuOption('/clients')} margin='7px 0' hoverColor='crimson'/>
-        <Folder size='1.5rem' onClick={()=>handleOnClickMenuOption('/projects')} margin='7px 0' hoverColor='crimson'/>
-        <Clock size='1.5rem' onClick={()=>handleOnClickMenuOption('/time')} margin='7px 0' hoverColor='crimson'/>
-        <CashCoin size='1.5rem' onClick={()=>handleOnClickMenuOption('/projects')} margin='7px 0' hoverColor='crimson'/>
-        <Gear size='1.5rem' onClick={()=>handleOnClickMenuOption('/projects')} margin='7px 0' hoverColor='crimson'/>
+        <Speedometer size='1.4rem' onClick={() => handleOnClickMenuOption('/clients')} margin='0 0 7px 0' hoverColor='crimson' />
+        <Person size='1.5rem' onClick={() => handleOnClickMenuOption('/clients')} margin='7px 0' hoverColor='crimson' />
+        <Folder size='1.5rem' onClick={() => handleOnClickMenuOption('/projects')} margin='7px 0' hoverColor='crimson' />
+        <Clock size='1.5rem' onClick={() => handleOnClickMenuOption('/time')} margin='7px 0' hoverColor='crimson' />
+        <CashCoin size='1.5rem' onClick={() => handleOnClickMenuOption('/projects')} margin='7px 0' hoverColor='crimson' />
+        <Gear size='1.5rem' onClick={() => handleOnClickMenuOption('/projects')} margin='7px 0' hoverColor='crimson' />
       </MenuBarOptionsStyle>
-
+      <MenuBarOptionsStyle>
+        <PersonPlus size='1rem' onClick={()=>setPanelTest('Test panel')} margin='7px 0'/>
+        <FolderPlus size='1rem' onClick={()=>setPanelTest('Test panel')} margin='7px 0'/>
+        <Clock size='1rem' onClick={() => setPanelTest('/time')} margin='7px 0' hoverColor='crimson' />
+      </MenuBarOptionsStyle>
     </MenuBarStyle>
+
+    </React.Fragment>
   )
 }
