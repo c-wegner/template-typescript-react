@@ -1189,3 +1189,4 @@ export const DoubleRightArrow = ({
     </Box>
   );
 };
+
