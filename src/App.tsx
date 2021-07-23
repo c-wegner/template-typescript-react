@@ -24,11 +24,7 @@ const App = () => {
   return (
     <Router>
       <AppStageStyle>
-        <MenuBar>
-          <Link to='/clients'>
-          <Person size='1.5rem' color='white'/>
-          </Link>
-        </MenuBar>
+        <MenuBar />
       </AppStageStyle>
       <Switch>
         <Route path='/clients'>

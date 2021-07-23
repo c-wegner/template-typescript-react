@@ -542,6 +542,44 @@ export const JournalPlus = ({
   );
 };
 
+
+export const Journal = ({
+  size = '1rem',
+  color = 'inherit',
+  hoverColor = 'inherit',
+  onClick = null,
+  visible = true,
+  margin = ''
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+  return (
+    <Box
+      size={size}
+      onClick={() => handleClick()}
+      margin={margin}
+      hoverColor={hoverColor}
+      visible={visible}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        color={color}
+        fill="currentColor"
+        className="bi bi-clock"
+        viewBox="0 0 16 16"
+      >
+  <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+  <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+ </svg>
+    </Box>
+  );
+};
+
 export const Pen = ({
   size = '1rem',
   color = 'inherit',
@@ -1105,7 +1143,7 @@ export const LeftArrow = ({
         viewBox="0 0 16 16"
       >
 
-<path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+<path fillRule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
 
  </svg>
     </Box>
@@ -1144,7 +1182,7 @@ export const RightArrow = ({
         viewBox="0 0 16 16"
       >
 
-<path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+<path fillRule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
 
  </svg>
     </Box>
@@ -1182,11 +1220,393 @@ export const DoubleRightArrow = ({
         viewBox="0 0 16 16"
       >
 
-<path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-  <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
+<path fillRule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
+  <path fillRule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
 
  </svg>
     </Box>
   );
 };
 
+
+export const Note = ({
+  size = '1rem',
+  color = 'inherit',
+  hoverColor = 'inherit',
+  onClick = null,
+  visible = true,
+  margin = ''
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+  return (
+    <Box
+      size={size}
+      onClick={() => handleClick()}
+      margin={margin}
+      hoverColor={hoverColor}
+      visible={visible}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        color={color}
+        fill="currentColor"
+        className="bi bi-clock"
+        viewBox="0 0 16 16"
+      >
+  <path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 15 8.586V2.5A1.5 1.5 0 0 0 13.5 1h-11zM2 2.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5V8H9.5A1.5 1.5 0 0 0 8 9.5V14H2.5a.5.5 0 0 1-.5-.5v-11zm7 11.293V9.5a.5.5 0 0 1 .5-.5h4.293L9 13.793z"/>
+
+ </svg>
+    </Box>
+  );
+};
+
+
+export const Eye = ({
+  size = '1rem',
+  color = 'inherit',
+  hoverColor = 'inherit',
+  onClick = null,
+  visible = true,
+  margin = ''
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+  return (
+    <Box
+      size={size}
+      onClick={() => handleClick()}
+      margin={margin}
+      hoverColor={hoverColor}
+      visible={visible}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        color={color}
+        fill="currentColor"
+        className="bi bi-clock"
+        viewBox="0 0 16 16"
+      >
+  <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+  <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+
+ </svg>
+    </Box>
+  );
+};
+
+
+export const HideEye = ({
+  size = '1rem',
+  color = 'inherit',
+  hoverColor = 'inherit',
+  onClick = null,
+  visible = true,
+  margin = ''
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+  return (
+    <Box
+      size={size}
+      onClick={() => handleClick()}
+      margin={margin}
+      hoverColor={hoverColor}
+      visible={visible}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        color={color}
+        fill="currentColor"
+        className="bi bi-clock"
+        viewBox="0 0 16 16"
+      >
+   <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/>
+  <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/>
+  <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z"/>
+
+ </svg>
+    </Box>
+  );
+};
+
+export const ToggleOff = ({
+  size = '1rem',
+  color = 'inherit',
+  hoverColor = 'inherit',
+  onClick = null,
+  visible = true,
+  margin = ''
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+  return (
+    <Box
+      size={size}
+      onClick={() => handleClick()}
+      margin={margin}
+      hoverColor={hoverColor}
+      visible={visible}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        color={color}
+        fill="currentColor"
+        className="bi bi-clock"
+        viewBox="0 0 16 16"
+      >
+  <path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z"/>
+
+ </svg>
+    </Box>
+  );
+};
+
+export const ToggleOn = ({
+  size = '1rem',
+  color = 'inherit',
+  hoverColor = 'inherit',
+  onClick = null,
+  visible = true,
+  margin = ''
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+  return (
+    <Box
+      size={size}
+      onClick={() => handleClick()}
+      margin={margin}
+      hoverColor={hoverColor}
+      visible={visible}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        color={color}
+        fill="currentColor"
+        className="bi bi-clock"
+        viewBox="0 0 16 16"
+      >
+  <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+
+ </svg>
+    </Box>
+  );
+};
+
+export const AltToggleOff = ({
+  size = '1rem',
+  color = 'inherit',
+  hoverColor = 'inherit',
+  onClick = null,
+  visible = true,
+  margin = ''
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+  return (
+    <Box
+      size={size}
+      onClick={() => handleClick()}
+      margin={margin}
+      hoverColor={hoverColor}
+      visible={visible}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        color={color}
+        fill="currentColor"
+        className="bi bi-clock"
+        viewBox="0 0 16 16"
+      >
+  <path d="M9 11c.628-.836 1-1.874 1-3a4.978 4.978 0 0 0-1-3h4a3 3 0 1 1 0 6H9z"/>
+  <path d="M5 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0 1A5 5 0 1 0 5 3a5 5 0 0 0 0 10z"/>
+
+ </svg>
+    </Box>
+  );
+};
+
+export const AltToggleOn = ({
+  size = '1rem',
+  color = 'inherit',
+  hoverColor = 'inherit',
+  onClick = null,
+  visible = true,
+  margin = ''
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+  return (
+    <Box
+      size={size}
+      onClick={() => handleClick()}
+      margin={margin}
+      hoverColor={hoverColor}
+      visible={visible}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        color={color}
+        fill="currentColor"
+        className="bi bi-clock"
+        viewBox="0 0 16 16"
+      >
+  <path d="M7 5H3a3 3 0 0 0 0 6h4a4.995 4.995 0 0 1-.584-1H3a2 2 0 1 1 0-4h3.416c.156-.357.352-.692.584-1z"/>
+  <path d="M16 8A5 5 0 1 1 6 8a5 5 0 0 1 10 0z"/>
+
+ </svg>
+    </Box>
+  );
+};
+
+export const CalendarBlank = ({
+  size = '1rem',
+  color = 'inherit',
+  hoverColor = 'inherit',
+  onClick = null,
+  visible = true,
+  margin = ''
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+  return (
+    <Box
+      size={size}
+      onClick={() => handleClick()}
+      margin={margin}
+      hoverColor={hoverColor}
+      visible={visible}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        color={color}
+        fill="currentColor"
+        className="bi bi-clock"
+        viewBox="0 0 16 16"
+      >
+  <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+  <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+
+
+ </svg>
+    </Box>
+  );
+};
+
+export const InfoLetter = ({
+  size = '1rem',
+  color = 'inherit',
+  hoverColor = 'inherit',
+  onClick = null,
+  visible = true,
+  margin = ''
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+  return (
+    <Box
+      size={size}
+      onClick={() => handleClick()}
+      margin={margin}
+      hoverColor={hoverColor}
+      visible={visible}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        color={color}
+        fill="currentColor"
+        className="bi bi-clock"
+        viewBox="0 0 16 16"
+      >
+    <path d="m10.277 5.433-4.031.505-.145.67.794.145c.516.123.619.309.505.824L6.101 13.68c-.34 1.578.186 2.32 1.423 2.32.959 0 2.072-.443 2.577-1.052l.155-.732c-.35.31-.866.434-1.206.434-.485 0-.66-.34-.536-.939l1.763-8.278zm.122-3.673a1.76 1.76 0 1 1-3.52 0 1.76 1.76 0 0 1 3.52 0z"/>
+
+
+ </svg>
+    </Box>
+  );
+};
+
+export const InfoCircle = ({
+  size = '1rem',
+  color = 'inherit',
+  hoverColor = 'inherit',
+  onClick = null,
+  visible = true,
+  margin = ''
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+  return (
+    <Box
+      size={size}
+      onClick={() => handleClick()}
+      margin={margin}
+      hoverColor={hoverColor}
+      visible={visible}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        color={color}
+        fill="currentColor"
+        className="bi bi-clock"
+        viewBox="0 0 16 16"
+      >
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+
+
+ </svg>
+    </Box>
+  );
+};

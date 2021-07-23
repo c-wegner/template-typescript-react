@@ -26,7 +26,7 @@ const ClickScreen=styled.div `
   bottom: 0;
   right: 0;
   left: 0;
-  rgba(0,0,0, .2);
+  background-color: rgba(0,0,0, .2);
   cursor: pointer;
 `
 
@@ -64,7 +64,8 @@ export const Panel = ({
 
   return (
     <React.Fragment>
-    <ClickScreen onClick={()=>onExit()}/>
+    <ClickScreen onClick={()=>onExit()} display={display? 'flex': 'none'}/>
+
     <ContainerStyle width={display ? width : '0'} boxShadow={display ? Layout.options.shadow.hover : ''}>
 
       <ExitBarStyle display={showExitBar ? 'flex' : 'none'}>

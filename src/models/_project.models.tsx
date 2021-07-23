@@ -24,6 +24,7 @@ export class Project{
 
   assignedTo = 'cwegner'
   checkInOn = false
+  isBillable= true;
 
   followUpOn = false;
   followUpPhone = false;

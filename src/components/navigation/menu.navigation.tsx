@@ -5,6 +5,8 @@ import { Person, Folder, Clock, CashCoin, Gear, Speedometer, PersonPlus, FolderP
 import {Panel} from '../panel/styles.panel';
 
 import { Layout } from '../../globals/styles.globals'
+import { Project } from '../../models/_project.models';
+import { ProjectForm } from '../../forms/project.forms';
 
 const MenuBarStyle = styled.div`
   display: flex;
@@ -27,9 +29,11 @@ export const MenuBarOptionsStyle = styled.nav`
 `
 
 export const MenuBar = ({
-  children
+
 }) => {
   const history = useHistory()
+
+  const [currentProject, setCurrentProject] = useState(new Project())
 
   const handleOnClickMenuOption = (path: string) => {
     history.push(path)
@@ -40,7 +44,7 @@ export const MenuBar = ({
   return (
     <React.Fragment>
           <Panel id='Test panel' currentPanel={panelTest} onExit={()=>setPanelTest('')}>
-      Test
+      <ProjectForm project={currentProject} displayReadOnly/>
     </Panel>
     <MenuBarStyle>
       <MenuBarOptionsStyle>
