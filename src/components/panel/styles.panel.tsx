@@ -50,6 +50,7 @@ const ExitBarStyle = styled.div<{ display: string }> `
   top:0;
   bottom:0;
   border-right: 1px solid;
+  width: 2rem;
 `
 
 export const Panel = ({

@@ -158,6 +158,28 @@ const SubmitButton = ({
   )
 }
 
+const convertToProject=(obj: any)=>{
+  const temp = new Project()
+  for(let prop in obj){
+    temp[prop] = obj[prop]
+  }
+  return temp
+}
+
+const EnterButton =({
+  disabled = false,
+  req=[]
+})=>{
+  const formContext: IFormContext = useContext(FormContext)
+  const project = convertToProject(formContext.object)
+
+  const bookOfCards = useContext(ClientContext)
+  const client = bookOfCards.getClient(project.clientDisplay)
+
+  const clientProjects = client
+
+}
+
 function verifyRequirements(obj, req: string[]): boolean {
   const l = req.length
   for (let i = 0; i < l; i++) {

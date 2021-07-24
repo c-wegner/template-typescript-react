@@ -1,6 +1,13 @@
 import { submitObject, retrieveDocument } from "../globals/firebase";
 import { utilities } from "./utilities.models";
 
+interface ICurrentProject{
+  id: string;
+  display: string;
+  assignedTo: string;
+  lane: string;
+}
+
 export class ClientCard{
   id=''
   name=''
@@ -19,6 +26,8 @@ export class ClientCard{
 
   lastSaveAt = 0;
 
+  currentProjects: ICurrentProject[] = []
+
   get path(){
     return 'clientCard'
   }
@@ -31,7 +40,6 @@ export class ClientCard{
   
     return retrieveDocument('client', this.id, setter)
   }
-
 
   static generateAndSave(client: any){
     const temp = new ClientCard()
